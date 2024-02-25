@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const url = 'https://pg6qb4jigi.execute-api.us-east-1.amazonaws.com/prod/zipCodeInfo';
+        const requestBody = {
+            
+    "zipCode": "75001",
+    "request_type": "DEV",
+    "request_from": "dev_version"
+
+        };
+
+        function testCORS() {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response here
+                console.log(data);
+                alert("CORS test passed!");
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('Error:', error);
+                alert("CORS test failed!");
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="testCORS()">Test CORS</button>
+    
+</body>
+
+</html>
